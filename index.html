@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cajon Revision</title>
+    <title>Mensaje Cajon</title>
     <link rel="icon" href="intra.png" type="image/png">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -37,5 +37,17 @@
             document.getElementById('mensaje').textContent = mensaje;
         }
     </script>
+
+<button class="copy-button" onclick="copiarTexto()">Copiar Mensaje</button>
+
+<script>
+    function copiarTexto() {
+        const mensaje = document.getElementById('mensaje').textContent;
+        navigator.clipboard.writeText(mensaje)
+            .then(() => alert('Texto copiado al portapapeles'))
+            .catch(err => alert('Error al copiar el texto'));
+    }
+</script>
+
 </body>
 </html>
