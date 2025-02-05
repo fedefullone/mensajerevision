@@ -20,6 +20,9 @@
         <label for="seller">Seller:</label><br>
         <input type="text" id="seller" name="seller" required><br><br>
 
+        <label for="celular">Celular:</label><br>
+        <input type="text" id="celular" name="celular" required><br><br>
+
         <button type="button" onclick="generarMensaje()">Enviar</button>
     </form>
 
@@ -38,16 +41,29 @@
         }
     </script>
 
-<button class="copy-button" onclick="copiarTexto()">Copiar Mensaje</button>
+    <button class="copy-button" onclick="copiarTexto()">Copiar Mensaje</button>
+    <button class="copy-button" onclick="enviarWhatsApp()">Enviar por WhatsApp</button>
 
-<script>
-    function copiarTexto() {
-        const mensaje = document.getElementById('mensaje').textContent;
-        navigator.clipboard.writeText(mensaje)
-            .then(() => alert('Texto copiado al portapapeles'))
-            .catch(err => alert('Error al copiar el texto'));
-    }
-</script>
+    <script>
+        function copiarTexto() {
+            const mensaje = document.getElementById('mensaje').textContent;
+            navigator.clipboard.writeText(mensaje)
+                .then(() => alert('Texto copiado al portapapeles'))
+                .catch(err => alert('Error al copiar el texto'));
+        }
 
+        function enviarWhatsApp() {
+            const celular = document.getElementById('celular').value;
+            const mensaje = encodeURIComponent(document.getElementById('mensaje').textContent);
+
+            if (celular.trim() === '' || mensaje.trim() === '') {
+                alert('Por favor, completa el celular y genera el mensaje antes de enviar.');
+                return;
+            }
+
+            const url = `https://wa.me/${celular}?text=${mensaje}`;
+            window.open(url, '_blank');
+        }
+    </script>
 </body>
 </html>
