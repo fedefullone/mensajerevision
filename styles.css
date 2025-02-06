@@ -6,22 +6,43 @@ body {
     line-height: 1.6;
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
 h1 {
     color: #cc0000;
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 20px;
+    width: 100%;
 }
 
-form {
-    max-width: 450px;
-    margin: 0 auto;
+.form-container {
+    flex: 1;
+    max-width: 400px;
     padding: 25px;
     background: #ffffff;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
+
+.mensaje-container {
+    flex: 1;
+    max-width: 400px;
+    padding: 120px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
 
 label {
     font-weight: bold;
@@ -32,7 +53,7 @@ label {
 input[type="text"] {
     width: 100%;
     padding: 12px;
-    margin-bottom: 1px;
+    margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
@@ -53,18 +74,18 @@ button {
 }
 
 button:hover {
-    background-color: #cc0000;
+    background-color: #990000;
 }
 
 h2 {
     color: #cc0000;
     text-align: center;
-    margin-top: 30px;
     font-size: 1.8rem;
 }
 
 pre {
     max-width: 450px;
+    width: 100%;
     margin: 20px auto;
     padding: 15px;
     background: #f9f9f9;
@@ -73,6 +94,7 @@ pre {
     white-space: pre-wrap;
     word-wrap: break-word;
     font-family: 'Courier New', Courier, monospace;
+    overflow: auto; /* Agrega scroll si el contenido es más grande */
 }
 
 .logo {
@@ -101,3 +123,15 @@ pre {
 .copy-button:hover {
     background-color: black;
 }
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-container, .mensaje-container {
+        max-width: 100%;
+    }
+}
+
+
